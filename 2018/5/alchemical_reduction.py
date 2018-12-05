@@ -19,18 +19,6 @@ def react_string(data):
 
     return len(stack)
 
-def react_string2(data):
-    i=0
-    while i != len(data) - 1:
-        if  ((chr(ord(data[i]) + 32))
-            if ord(data[i]) <= ord("Z")
-            else chr(ord(data[i]) - 32)) == data[i+1]:
-                data = data[:i] + data[i+2:]
-                i -= 2
-        i+=1
-
-    return len(data)
-
 
 def react_string2(data, return_raw=False):
     i=0
