@@ -9,6 +9,12 @@ def calculate_fuel_requirements_with_fuel(value):
         value = new_value
     return sum(fuel_reqs)
 
+def calculate_fuel_req_p2(value):
+    output = [value]
+    while output[-1] > 6:
+        output.append(calculate_fuel_requirements(output[-1]))
+    return sum(output[1:])
+
 # Test known examples from Q
 assert calculate_fuel_requirements(12) == 2
 assert calculate_fuel_requirements(14) == 2
@@ -18,6 +24,11 @@ assert calculate_fuel_requirements(100756) == 33583
 assert calculate_fuel_requirements_with_fuel(14) == 2
 assert calculate_fuel_requirements_with_fuel(1969) == 966
 assert calculate_fuel_requirements_with_fuel(100756) == 50346
+
+assert calculate_fuel_req_p2(14) == 2
+assert calculate_fuel_req_p2(1969) == 966
+assert calculate_fuel_req_p2(100756) == 50346
+
 
 if __name__ == "__main__":
     
