@@ -17,12 +17,10 @@ def parse_data_pt_2(data):
 
 
 def calculate_winnings(times, distances):
-    race_winnings = []
-    for time, distance in zip(times, distances):
-        races = [1 for i in range(time+1) if i*(time - i) > distance]
-        race_winnings.append(sum(races))
+    winning_prods = reduce(lambda x, y: x*y, \
+        [sum([1 for i in range(t) if -i**2 + i*t - d>0]) for t, d in zip(times, distances)]
+    )
 
-    winning_prods = reduce(lambda x, y: x*y, race_winnings)
     return winning_prods
 
 
