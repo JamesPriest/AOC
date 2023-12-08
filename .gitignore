@@ -2,3 +2,6 @@
 
 debug
 target
+
+# Recursively ignore all files named "input.txt" (whatever you named it)
+**/input.txt
