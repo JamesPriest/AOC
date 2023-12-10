@@ -132,27 +132,28 @@ test_case_3 = """LR
 XXX = (XXX, XXX)
 """
 
-instructions, mappings = parse_input(test_case)
-nodes = parse_mappings(mappings)
-steps = get_steps(nodes, instructions)
+def part_1(input_data):
+    instructions, mappings = parse_input(input_data)
+    nodes = parse_mappings(mappings)
+    steps = get_steps(nodes, instructions)   
+    return steps
+
+steps = part_1(test_case)
 assert steps == 2
 
 
-instructions, mappings = parse_input(test_case_2)
-nodes = parse_mappings(mappings)
-steps = get_steps(nodes, instructions)
+steps = part_1(test_case_2)
 assert steps == 6
 
 
 with open("input.txt", "r") as f:
     data = f.read()
 
-instructions, mappings = parse_input(data)
-nodes = parse_mappings(mappings)
-steps = get_steps(nodes, instructions)
+steps = part_1(data)
 print(steps)
 
 
+#### Part 2
 
 instructions, mappings = parse_input(test_case_3)
 nodes = parse_mappings(mappings)
@@ -165,13 +166,17 @@ nodes = parse_mappings(mappings)
 # steps = get_steps_pt2(nodes, instructions)
 # print(steps)
 
+def part_2(input_data):
 
+    # Approach via cycle length and LCM
+    instructions, mappings = parse_input(data)
+    nodes = parse_mappings(mappings)
+    ghosts = [i for i in nodes if i.end == 'A']
+    # steps = get_steps_pt2(nodes, instructions)
+    cycles = [calculate_ghost_cycle(i, instructions) for i in ghosts]
 
-# Approach via cycle length and LCM
-instructions, mappings = parse_input(data)
-nodes = parse_mappings(mappings)
-ghosts = [i for i in nodes if i.end == 'A']
-# steps = get_steps_pt2(nodes, instructions)
+    ghosts_LCM = math.lcm(*[i[0] for i in cycles])
 
-cycles = [calculate_ghost_cycle(i, instructions) for i in ghosts]
-print(math.lcm(*[i[0] for i in cycles]))
+    return ghosts_LCM
+
+print(part_2(data))
