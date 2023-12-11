@@ -32,10 +32,7 @@ def expand_space(_data, factor=1):
     # Column next
     columns_to_transform = get_empty_columns(data)
 
-    print(rows_to_transform)
-    print(columns_to_transform)
     # Perform the expansion
-
     # Row level expansion
     new_row = ['.' for _ in range(len(data[0]))]
     for row in rows_to_transform[::-1]:
@@ -132,7 +129,11 @@ analysis_pairs = [tuple_abs_difference_sum(test_galax[i], test_galax[j]) for i i
 assert sum(analysis_pairs) == 374
 
 
-# Part 1 Solution
+###############################
+#                             #
+# Part 1                      #
+#                             #
+###############################
 with open("input.txt", "r") as f:
     data = f.read()
     data = parse_input(data)
@@ -143,20 +144,23 @@ analysis_pairs = [tuple_abs_difference_sum(galax[i], galax[j]) for i in galax.ke
 
 
 # Part 2
-print(f"\nPart 2\n")
 test_expansion_pt2 = expand_space(test_parsed, factor=(100-1))
 test_expansion_pt2_repr = '\n'.join([''.join(i) for i in test_expansion_pt2])
 test_galax_pt2 = get_galaxies(test_expansion_pt2)
 analysis_pairs_pt2 = [tuple_abs_difference_sum(test_galax_pt2[i], test_galax_pt2[j]) for i in test_galax_pt2.keys() for j in range(i)]
+print(f"\nPart 2 - result: {sum(analysis_pairs_pt2)}")
 
-print(sum(analysis_pairs_pt2))
-
+## Okay do not do this, it will not run
 # expansion = expand_space(data, factor = (1_000_000 - 1))
 # galax = get_galaxies(expansion)
 # analysis_pairs = [tuple_abs_difference_sum(galax[i], galax[j]) for i in galax.keys() for j in range(i)]
 # print(sum(analysis_pairs))
 
-
+###############################
+#                             #
+# Part 2                      #
+#                             #
+###############################
 tg = get_galaxies(test_parsed)
 tc = get_empty_columns(test_parsed)
 tr = get_empty_rows(test_parsed)
