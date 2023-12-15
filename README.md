@@ -6,7 +6,9 @@ Currently contains solutions and partial solutions for
  - 2017
  - 2018
  - 2019
-
+ - 2020 (Only one day so far :sweat_smile:)
+ - 2021
+ - 2023 (Current)
 
 The current aim and objective is to finish all current challenges.
 
