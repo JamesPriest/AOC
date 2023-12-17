@@ -127,19 +127,9 @@ class Beam:
 
         if symbol == ".":
             self.actions[(symbol, self.dirn)]()
-            # if self.dirn == ">":
-            #     self.loc.move_right()
-            # elif self.dirn == "<":
-            #     self.loc.move_left()
-            # elif self.dirn == "^":
-            #     self.loc.move_up()
-            # elif self.dirn == "V":
-            #     self.loc.move_down()
         elif symbol == "-":
-            if self.dirn == ">":
-                self.loc.move_right()
-            elif self.dirn == "<":
-                self.loc.move_left()
+            if self.dirn == ">" or self.dirn == "<":
+                self.actions[(symbol, self.dirn)]()
             elif self.dirn == "^" or self.dirn == "V":
                 new_beam = Beam(self.loc.duplicate(), "<")
                 new_beam.loc.move_left()
